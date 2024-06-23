@@ -112,9 +112,9 @@ tinyHrt_get_gitinfo() {
     local gitRmtIcon=""
     case "${gitRmt}" in
       local) gitRmtIcon="${TINYHRT_GITINFO_LOCAL_ICON}" ;;
-      github) gitRmtIcon="${TINYHRT_GITINFO_GITHUB_ICON}" ;;
-      gitlab) gitRmtIcon="${TINYHRT_GITINFO_GITLAB_ICON}" ;;
-      bitbucket) gitRmtIcon="${TINYHRT_GITINFO_BITBUCKET_ICON}" ;;
+      *github*) gitRmtIcon="${TINYHRT_GITINFO_GITHUB_ICON}" ;;
+      *gitlab*) gitRmtIcon="${TINYHRT_GITINFO_GITLAB_ICON}" ;;
+      *bitbucket*) gitRmtIcon="${TINYHRT_GITINFO_BITBUCKET_ICON}" ;;
       *) gitRmtIcon="${TINYHRT_GITINFO_OTHER_ICON}" ;;
     esac
 
