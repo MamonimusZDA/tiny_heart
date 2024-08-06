@@ -166,7 +166,7 @@ tinyHrt_get_texc() {
 
 # Working directory info
 tinyHrt_get_dir() {
-  local pth=$(print -P '%~' | sed "s#\([^a-z]*[a-z]\)[^/]*/#\1/#g")
+  local pth=$(sed "s#\([^a-z]*[a-z]\)[^/]*/#\1/#g" <<< "${PWD/#${HOME}/~}")
   local dirs=("${${(@s:/:)pth}[@]#}")
 
   local SS="%F{$TINYHRT_COLOR_FG_DIR}%B"$'%{\001\x1b[3m\002%}'
