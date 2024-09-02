@@ -167,6 +167,7 @@ tinyHrt_get_texc() {
 # Working directory info
 tinyHrt_get_dir() {
   local pth=$(sed "s#\([^a-z]*[a-z]\)[^/]*/#\1/#g" <<< "${PWD/#${HOME}/~}")
+  pth=${pth// /\\}
   local dirs=("${${(@s:/:)pth}[@]#}")
 
   local SS="%F{$TINYHRT_COLOR_FG_DIR}%B"$'%{\001\x1b[3m\002%}'
@@ -184,7 +185,7 @@ tinyHrt_get_dir() {
     *) local icon="${TINYHRT_ROOT_DIR_ICON} " ;;
   esac
 
-  printf -- '%s' "%F{$TINYHRT_COLOR_FG_DIR}${icon}${${dirs[*]// //}/^\%B\%b\//%B/%b}%F{reset}"
+  printf -- '%s' "%F{$TINYHRT_COLOR_FG_DIR}${icon}${${${dirs[*]// //}//\\/ }/^\%B\%b\//%B/%b}%F{reset}"
 }
 
 # Command's exit status decoration
